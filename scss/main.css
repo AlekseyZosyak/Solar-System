@@ -1,0 +1,194 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(19, 32, 49);
+}
+
+.super {
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.star {
+  position: absolute;
+  border-radius: 250px;
+  background-color: rgb(255, 255, 70);
+  opacity: 1;
+  z-index: 0;
+  animation-name: star-light;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+.star__smoll {
+  animation-delay: 3s;
+}
+.star__big {
+  animation-delay: 6s;
+}
+@keyframes star-light {
+  from {
+    background-color: rgba(255, 255, 70, 0.3);
+  }
+  to {
+    background-color: rgb(255, 255, 70);
+  }
+}
+
+.cross {
+  position: absolute;
+  left: 0%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 0.01px dotted white;
+  border-radius: 100%;
+  opacity: 0.3;
+  z-index: 0;
+}
+
+.blur {
+  filter: blur(5px);
+}
+
+.planets {
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+.planets .planet {
+  position: absolute;
+  z-index: 10;
+}
+.planets .planet:hover {
+  cursor: pointer;
+}
+.planets .planet__sun {
+  width: 700px;
+  height: 700px;
+  left: -240px;
+  top: -200px;
+}
+.planets .planet__mercury {
+  width: 30px;
+  height: 30px;
+  top: -220px;
+  left: 130px;
+}
+.planets .planet__venus {
+  width: 70px;
+  height: 70px;
+  top: 185px;
+  left: 200px;
+}
+.planets .planet__earch {
+  width: 75px;
+  height: 75px;
+  top: 0px;
+  left: 385px;
+}
+.planets .planet__mars {
+  width: 50px;
+  height: 50px;
+  top: -100px;
+  left: 495px;
+}
+.planets .planet__jupiter {
+  width: 150px;
+  height: 150px;
+  top: 100px;
+  left: 575px;
+}
+.planets .planet__saturn {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  top: -290px;
+  left: 690px;
+}
+.planets .planet__uranus {
+  width: 120px;
+  height: 120px;
+  top: -100px;
+  left: 915px;
+}
+.planets .planet__neptune {
+  width: 110px;
+  height: 110px;
+  top: 100px;
+  left: 1060px;
+}
+
+.h {
+  position: absolute;
+  color: red;
+}
+
+.mer {
+  position: absolute;
+  font-size: 14px;
+  top: -250px;
+  left: 130px;
+  color: rgb(250, 250, 250);
+}
+
+.nav {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(0%, -50%);
+  border: 1px solid white;
+  padding: 50px;
+}
+
+.card__button {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  color: red;
+}
+.card__button[data-btn-previous] {
+  top: 45%;
+  left: 10%;
+}
+.card__button[data-btn-next] {
+  top: 45%;
+  left: 90%;
+}
+.card .planets-block {
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%, -50%);
+  width: 1100px;
+  height: 500px;
+  z-index: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 0.1px solid white;
+  border-radius: 20px;
+  background-color: rgb(39, 57, 80);
+}
+
+.icon {
+  width: 400px;
+  height: 400px;
+}
+
+.text {
+  width: 500px;
+  height: 400px;
+}/*# sourceMappingURL=main.css.map */

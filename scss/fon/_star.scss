@@ -1,0 +1,27 @@
+.star {
+    position: absolute;
+    border-radius: 250px;
+    background-color:rgb(255, 255, 70);
+    opacity: 1;
+    z-index: 0;
+    animation-name: star-light;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+
+    &__smoll {
+        animation-delay: 3s;
+    }
+    &__big {
+        animation-delay: 6s;
+    }
+
+    @keyframes star-light {
+        from {
+            background-color: rgba(255, 255, 70, 0.3);
+        }
+        to {
+            background-color: rgba(255, 255, 70, 1);
+        }
+      }
+}

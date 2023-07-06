@@ -1,0 +1,84 @@
+.planets {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+
+    .planet {
+        position: absolute;
+        z-index: 10;
+        &:hover {
+            cursor: pointer;
+        }
+
+        &__sun {
+            width: 700px;
+            height: 700px;
+            left: -240px;
+            top: -200px;
+        }
+        &__mercury {
+            width: 30px;
+            height: 30px;
+            top: -220px;
+            left: 130px;
+        }
+        &__venus {
+            width: 70px;
+            height: 70px;
+            top: 185px;
+            left: 200px;
+        }
+        &__earch {
+            width: 75px;
+            height: 75px;
+            top: 0px;
+            left: 385px;
+        }
+    
+        &__mars {
+            width: 50px;
+            height: 50px;
+            top: -100px;
+            left: 495px;
+        }
+        &__jupiter {
+            width: 150px;
+            height: 150px;
+            top: 100px;
+            left: 575px;
+        }
+        &__saturn {
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            top: -290px;
+            left: 690px;
+        }
+        &__uranus {
+            width: 120px;
+            height: 120px;
+            top: -100px;
+            left: 915px;
+        }
+        &__neptune {
+            width: 110px;
+            height: 110px;
+            top: 100px;
+            left: 1060px;
+        }
+    }
+}
+
+.h {
+    position: absolute;
+    color: red;
+}
+.mer {
+    position: absolute;
+    font-size: 14px;
+    top: -250px;
+    left: 130px;
+    color: rgb(250, 250, 250);
+}
