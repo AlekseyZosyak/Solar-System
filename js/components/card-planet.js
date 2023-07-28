@@ -1,10 +1,11 @@
 import planetRoad from "./road-planet";
 
 class CardPlanet {
-    constructor(name, classList, href) {
+    constructor(name, classList, href, temperature) {
         this.name = name;
         this.classList = classList;
         this.href = href;
+        this.temperature = temperature
     }
 
     renderCard() {
@@ -22,7 +23,7 @@ class CardPlanet {
                         <button data-btn-close>X</button>
                     <div class="text">
                         <h2>${this.name}</h2>
-                        <div>Surface Temperature: 460°C</div>
+                        <div>Surface Temperature: ${this.temperature}°C</div>
                         <div>Radius: 6,052 km</div>
                         <div>Distance to Sun: 108,200,000 km</div>
                         <div>Moons: 0</div>
@@ -55,16 +56,17 @@ class CardPlanet {
 }
 
 
-function createCardPlanet(name, id, href) {
+function createCardPlanet(name, id, href, temperature) {
     this.name = name;
     this.id = id;
     this.href = href;
+    this.temperature = temperature;
 
     const wrapp = document.querySelector('.planets');
     wrapp.addEventListener('click', (event) => {
         if (event.target && event.target.id === `${this.id}`) {
-            const planet = new CardPlanet(`${this.name}`, 'card', `${this.href}`);
-            planet.renderCard('mars');
+            const planet = new CardPlanet(`${this.name}`, 'card', `${this.href}`, this.temperature);
+            planet.renderCard();
             planet.delete();
         }
     });

@@ -16,10 +16,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 class CardPlanet {
-    constructor(name, classList, href) {
+    constructor(name, classList, href, temperature) {
         this.name = name;
         this.classList = classList;
         this.href = href;
+        this.temperature = temperature
     }
 
     renderCard() {
@@ -37,7 +38,7 @@ class CardPlanet {
                         <button data-btn-close>X</button>
                     <div class="text">
                         <h2>${this.name}</h2>
-                        <div>Surface Temperature: 460°C</div>
+                        <div>Surface Temperature: ${this.temperature}°C</div>
                         <div>Radius: 6,052 km</div>
                         <div>Distance to Sun: 108,200,000 km</div>
                         <div>Moons: 0</div>
@@ -70,16 +71,17 @@ class CardPlanet {
 }
 
 
-function createCardPlanet(name, id, href) {
+function createCardPlanet(name, id, href, temperature) {
     this.name = name;
     this.id = id;
     this.href = href;
+    this.temperature = temperature;
 
     const wrapp = document.querySelector('.planets');
     wrapp.addEventListener('click', (event) => {
         if (event.target && event.target.id === `${this.id}`) {
-            const planet = new CardPlanet(`${this.name}`, 'card', `${this.href}`);
-            planet.renderCard('mars');
+            const planet = new CardPlanet(`${this.name}`, 'card', `${this.href}`, this.temperature);
+            planet.renderCard();
             planet.delete();
         }
     });
@@ -214,6 +216,29 @@ function createCardPlanet(name, id, href) {
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createCardPlanet);
+
+/***/ }),
+
+/***/ "./js/components/requests.js":
+/*!***********************************!*\
+  !*** ./js/components/requests.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+
+const getResource = async (url) => {
+    const res = await fetch(url);
+    if (!res.ok) {
+        throw new Error(`ERROR`);
+    }
+    return await res.json();
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getResource);
 
 /***/ }),
 
@@ -373,6 +398,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_star__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/star */ "./js/components/star.js");
 /* harmony import */ var _components_road_planet__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/road-planet */ "./js/components/road-planet.js");
 /* harmony import */ var _components_card_planet__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/card-planet */ "./js/components/card-planet.js");
+/* harmony import */ var _components_requests__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/requests */ "./js/components/requests.js");
+
+
 
 
 
@@ -380,24 +408,31 @@ __webpack_require__.r(__webpack_exports__);
 (0,_components_star__WEBPACK_IMPORTED_MODULE_0__["default"])();
 (0,_components_road_planet__WEBPACK_IMPORTED_MODULE_1__["default"])(8);
 
-new _components_card_planet__WEBPACK_IMPORTED_MODULE_2__["default"]('mercury', 'mercury', './images/planet/symbol-defs.svg#icon-Mercury');
-new _components_card_planet__WEBPACK_IMPORTED_MODULE_2__["default"]('venus', 'venus', './images/planet/symbol-defs.svg#icon-Venus');
-new _components_card_planet__WEBPACK_IMPORTED_MODULE_2__["default"]('earch', 'earch', './images/planet/symbol-defs.svg#icon-Earch');
-new _components_card_planet__WEBPACK_IMPORTED_MODULE_2__["default"]('mars', './images/planet/symbol-defs.svg#icon-Mars');
-new _components_card_planet__WEBPACK_IMPORTED_MODULE_2__["default"]('jupiter', './images/planet/symbol-defs.svg#icon-Jupiter');
-new _components_card_planet__WEBPACK_IMPORTED_MODULE_2__["default"]('saturn', './images/planet/symbol-defs.svg#icon-Saturn');
-new _components_card_planet__WEBPACK_IMPORTED_MODULE_2__["default"]('uranus', './images/planet/symbol-defs.svg#icon-Uranus');
-new _components_card_planet__WEBPACK_IMPORTED_MODULE_2__["default"]('neptune', './images/planet/symbol-defs.svg#icon-Neptune');
+
+(0,_components_requests__WEBPACK_IMPORTED_MODULE_3__["default"])('http://localhost:3000/planets')
+    .then(data => {
+        data.forEach(item => {
+            new _components_card_planet__WEBPACK_IMPORTED_MODULE_2__["default"](item.name, item.id, 'dda', item.temperature);
+        });
+    })
+
+
+
+// new createCardPlanet('mercury', 'mercury', './images/planet/symbol-defs.svg#icon-Mercury');
+// new createCardPlanet('venus', 'venus', './images/planet/symbol-defs.svg#icon-Venus');
+// new createCardPlanet('earch', 'earch', './images/planet/symbol-defs.svg#icon-Earch');
+// new createCardPlanet('mars', 'mars', './images/planet/symbol-defs.svg#icon-Mars');
+// new createCardPlanet('jupiter', 'jupiter', './images/planet/symbol-defs.svg#icon-Jupiter');
+// new createCardPlanet('saturn', 'saturn', './images/planet/symbol-defs.svg#icon-Saturn');
+// new createCardPlanet('uranus', 'uranus', './images/planet/symbol-defs.svg#icon-Uranus');
+// new createCardPlanet('neptune', 'neptune', './images/planet/symbol-defs.svg#icon-Neptune');
 
 
 
 
 
 
-
-
-
-
+    
 
 
 

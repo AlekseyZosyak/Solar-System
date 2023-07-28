@@ -1,0 +1,16 @@
+{
+    "planets": [
+        {
+            "name": "Mercury",
+            "id": "mercury",
+            "temperature": 30
+          
+        },
+        {
+            "name": "Venus",
+            "id": "venus",
+            "temperature": 40
+          
+        }
+    ]
+}
