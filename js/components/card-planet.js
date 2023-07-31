@@ -1,14 +1,19 @@
 import planetRoad from "./road-planet";
 
 class CardPlanet {
-    constructor(name, classList, href, temperature) {
+    constructor(name, classList, href, temperature, distance, moons, radius, info) {
         this.name = name;
         this.classList = classList;
         this.href = href;
-        this.temperature = temperature
+        this.temperature = temperature;
+        this.distance = distance;
+        this.moons = moons;
+        this.radius = radius;
+        this.info = info;
     }
 
     renderCard() {
+        
         const element = document.createElement('div');
         element.classList.add(this.classList)
         element.innerHTML = `
@@ -16,7 +21,7 @@ class CardPlanet {
                 <div class="planets-block">
                     <div class="planets__icon">
                         <svg class="icon">
-                            <use href="${this.href}">
+                            <use href="./images/planet/symbol-defs.svg#icon-${this.href}">
                             </use>
                         </svg>
                     </div>
@@ -24,9 +29,10 @@ class CardPlanet {
                     <div class="text">
                         <h2>${this.name}</h2>
                         <div>Surface Temperature: ${this.temperature}°C</div>
-                        <div>Radius: 6,052 km</div>
-                        <div>Distance to Sun: 108,200,000 km</div>
-                        <div>Moons: 0</div>
+                        <div>Radius: ${this.radius} km</div>
+                        <div>Distance to Sun: ${this.distance} km</div>
+                        <div>Moons: ${this.moons} </div>
+                        <div>${this.info}</div>
                     </div>
                 </div>  
             <button class="card__button" data-btn-next>></button>`
@@ -47,8 +53,6 @@ class CardPlanet {
     }
 
     tabsControl() {
-        // const cardBtnNext = document.querySelector('button[data-btn-next]');
-        // const cardBtnPrevious = document.querySelector('button[data-btn-previose]');
         const item = document.querySelector('.super');
         console.log(121);
         item.classList.remove('blur');
@@ -56,16 +60,21 @@ class CardPlanet {
 }
 
 
-function createCardPlanet(name, id, href, temperature) {
+function createCardPlanet(name, id, href, temperature, distance, moons, radius, info) {
     this.name = name;
     this.id = id;
     this.href = href;
     this.temperature = temperature;
+    this.distance = distance;
+    this.moons = moons;
+    this.radius = radius;
+    this.info = info;
 
     const wrapp = document.querySelector('.planets');
     wrapp.addEventListener('click', (event) => {
         if (event.target && event.target.id === `${this.id}`) {
-            const planet = new CardPlanet(`${this.name}`, 'card', `${this.href}`, this.temperature);
+            const planet = new CardPlanet(`${this.name}`, 'card', this.href, this.temperature, this.distance, this.moons, this.radius, this.info);
+            
             planet.renderCard();
             planet.delete();
         }
@@ -81,120 +90,6 @@ function createCardPlanet(name, id, href, temperature) {
 
 
 
-
-
-// function createCardPlanet() {
-
-//     const wrapp = document.querySelector('.planets');
-//     wrapp.addEventListener('click', (event) => {
-
-//         if (event.target && event.target.id === 'mercury') {
-//             const mercury = new CardPlanet('card', "./images/planet/symbol-defs.svg#icon-Mercury");
-//             mercury.renderCard();
-//             mercury.delete();
-//         }
-//         if (event.target && event.target.id === 'venus') {
-//             const venus = new CardPlanet('card', "./images/planet/symbol-defs.svg#icon-Venus");
-//             venus.renderCard();
-//             venus.delete();
-//         }
-//         if (event.target && event.target.id === 'earch') {
-//             const earch = new CardPlanet('card', "./images/planet/symbol-defs.svg#icon-Earch");
-//             earch.renderCard();
-//             earch.delete();
-//         }
-//         if (event.target && event.target.id === 'mars') {
-//             const mars = new CardPlanet('card', "./images/planet/symbol-defs.svg#icon-Mars");
-//             mars.renderCard();
-//             mars.delete();
-//         } 
-//         if (event.target && event.target.id === 'jupiter') {
-//             const jupiter = new CardPlanet('card', "./images/planet/symbol-defs.svg#icon-Jupiter");
-//             jupiter.renderCard();
-//             jupiter.delete();
-//         } 
-//         if (event.target && event.target.id === 'saturn') {
-//             const saturn = new CardPlanet('card', "./images/planet/symbol-defs.svg#icon-Saturn");
-//             saturn.renderCard();
-//             saturn.delete();
-//         } 
-//         if (event.target && event.target.id === 'uranus') {
-//             const uranus = new CardPlanet('card', "./images/planet/symbol-defs.svg#icon-Uranus");
-//             uranus.renderCard();
-//             uranus.delete();
-//         } 
-//         if (event.target && event.target.id === 'neptune') {
-//             const neptune = new CardPlanet('card', "./images/planet/symbol-defs.svg#icon-Neptune");
-//             neptune.renderCard();
-//             neptune.delete();
-//         }
-//     });
-
-
-
-
-// const mercury = document.querySelector('.planet__mercury');
-// mercury.addEventListener('click', () => {
-//     const mercury = new CardPlanet('card', "./images/planet/symbol-defs.svg#icon-Mercury");
-//     mercury.renderCard();
-//     mercury.delete();
-// });
-
-// const venus = document.querySelector('.planet__venus');
-// venus.addEventListener('click', () => {
-//     const venus = new CardPlanet('card', "./images/planet/symbol-defs.svg#icon-Venus");
-//     venus.renderCard();
-//     venus.delete();
-// });
-
-// const earch = document.querySelector('.planet__earch');
-// earch.addEventListener('click', () => {
-//     const earch = new CardPlanet('card', "./images/planet/symbol-defs.svg#icon-Earch");
-//     earch.renderCard();
-//     earch.delete();
-// });
-
-// const mars = document.querySelector('.planet__mars');
-// mars.addEventListener('click', () => {
-//     const mars = new CardPlanet('card', "./images/planet/symbol-defs.svg#icon-Mars");
-//     mars.renderCard();
-//     mars.delete();
-// });
-
-// const jupiter = document.querySelector('.planet__jupiter');
-// jupiter.addEventListener('click', () => {
-//     const jupiter = new CardPlanet('card', "./images/planet/symbol-defs.svg#icon-Jupiter");
-//     jupiter.renderCard();
-//     jupiter.delete();
-// });
-
-// const saturn = document.querySelector('.planet__saturn');
-// saturn.addEventListener('click', () => {
-//     const saturn = new CardPlanet('card', "./images/planet/symbol-defs.svg#icon-Saturn");
-//     saturn.renderCard();
-//     saturn.delete();
-// });
-
-// const uranus = document.querySelector('.planet__uranus');
-// uranus.addEventListener('click', () => {
-//     const uranus = new CardPlanet('card', "./images/planet/symbol-defs.svg#icon-Uranus");
-//     uranus.renderCard();
-//     uranus.delete();
-// });
-
-// const neptune = document.querySelector('.planet__neptune');
-// neptune.addEventListener('click', () => {
-//     const neptune = new CardPlanet('card', "./images/planet/symbol-defs.svg#icon-Neptune");
-//     neptune.renderCard();
-//     neptune.delete();
-// });
-
-// const sun = document.querySelector('.planet__sun');
-// sun.addEventListener('click', () => {
-//     const sun = new CardPlanet('card', "./images/planet/symbol-defs.svg#icon-Sun");
-//     sun.renderCard();
-//     sun.delete();
-// });
 
 
 

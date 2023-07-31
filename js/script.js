@@ -11,9 +11,21 @@ planetRoad(8);
 getResource('http://localhost:3000/planets')
     .then(data => {
         data.forEach(item => {
-            new createCardPlanet(item.name, item.id, 'dda', item.temperature);
+        //   console.log(item.info)
+            new createCardPlanet(item.name, item.id, item.href, item.temperature, item.distance, item.moons, item.radius, item.info);
         });
     })
+
+
+
+
+
+
+
+
+
+
+
 
 
 
