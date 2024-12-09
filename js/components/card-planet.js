@@ -1,4 +1,5 @@
-import planetRoad from "./road-planet";
+
+
 
 class CardPlanet {
     constructor(name, classList, href, temperature, distance, moons, radius, info) {
